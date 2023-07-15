@@ -1,8 +1,17 @@
 import React from 'react';
-import './App.css';
+import Todos from './components/Todos';
+import DisplayTodos from './components/DisplayTodos';
+
+import styles from './app.module.scss';
 
 function App() {
-  return <div>Hello World</div>;
+  return (
+    <div className={styles.root}>
+      <h1>Todo App</h1>
+      <Todos />
+      <DisplayTodos />
+    </div>
+  );
 }
 
 export default App;

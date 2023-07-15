@@ -1,0 +1,62 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #e2f1ff;
+  width: 20rem;
+  height: 8rem;
+  border-radius: 5px;
+  margin-right: 1rem;
+  padding: 1rem;
+
+  textarea {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    height: 70%;
+    width: 80%;
+    color: #202c2d;
+    resize: none;
+    font-size: 1rem;
+
+    &:disabled {
+      background: transparent;
+    }
+  }
+
+  .buttons {
+    position: absolute;
+    bottom: 1rem;
+    right: 0.5rem;
+
+    button {
+      border-radius: 5px;
+      border: none;
+      margin: 0 0.6rem;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #064895;
+      background-color: transparent;
+
+      &:nth-child(2) {
+        color: green;
+      }
+      &:nth-child(3) {
+        color: red;
+      }
+    }
+  }
+
+  span {
+    position: absolute;
+    right: 0.3rem;
+    top: 0.3rem;
+    background-color: #064895;
+    border: 1px solid #e2f1ff;
+    color: #e2f1ff;
+    font-size: 0.8rem;
+    padding: 0.3rem 1rem;
+    border-radius: 5px;
+  }
+}

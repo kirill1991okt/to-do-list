@@ -1,0 +1,34 @@
+.root {
+  display: flex;
+  justify-content: center;
+
+  input {
+    min-width: 17rem;
+    width: 40vw;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    align-items: center;
+
+    &:focus {
+      outline: none;
+      border: 1px solid #064895;
+    }
+  }
+
+  button {
+    margin-left: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #064895;
+    border: 1px solid #fffca8;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    color: #fffca8;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}

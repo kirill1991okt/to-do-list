@@ -1,0 +1,39 @@
+.display {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .buttons {
+    margin-bottom: 2rem;
+
+    button {
+      font-size: 1.5rem;
+      font-weight: bold;
+      background-color: #064895;
+      border: 1px solid #fffca8;
+      border-radius: 5px;
+      padding: 0.5rem 1rem;
+      color: #fffca8;
+      cursor: pointer;
+
+      &:nth-child(2) {
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-self: flex-start;
+    margin-left: 5%;
+  }
+}

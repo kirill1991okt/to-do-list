@@ -1,0 +1,13 @@
+.root {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: #202c2d;
+    text-shadow: #fffca8 2px 2px 0px, #9c9c9c 4px 4px 0px;
+  }
+}
