@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { AiFillEdit } from 'react-icons/ai';
 import { IoCheckmarkDoneSharp, IoClose } from 'react-icons/io5';
 import { useAppDispatch } from '../../redux/hooks';
@@ -64,7 +65,18 @@ const TodoItem: React.FC<TodoItemType> = ({ todo }) => {
   };
 
   return (
-    <li key={todo.id} className={styles.card}>
+    <motion.li
+      initial={{ opacity: 0, scale: 0.7 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.3,
+        delay: 0.2,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
+      exit={{ opacity: 0, scale: 0.7 }}
+      key={todo.id}
+      className={styles.card}
+    >
       <textarea
         ref={textAreaRef}
         onChange={(e) => setTextValue(e.target.value)}
@@ -79,21 +91,45 @@ const TodoItem: React.FC<TodoItemType> = ({ todo }) => {
       />
       <div className={styles.buttons}>
         {!todo.completed && (
-          <button onClick={onChangeFocus}>
+          <motion.button
+            whileHover={{ scale: 1.3 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={onChangeFocus}
+          >
             <AiFillEdit />
-          </button>
+          </motion.button>
         )}
         {!todo.completed && (
-          <button onClick={() => onCompletedTodo(todo.id)}>
+          <motion.button
+            whileHover={{ scale: 1.3 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => onCompletedTodo(todo.id)}
+          >
             <IoCheckmarkDoneSharp />
-          </button>
+          </motion.button>
         )}
-        <button onClick={() => onRemoveTask(todo.id)}>
+        <motion.button
+          whileHover={{ scale: 1.3 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => onRemoveTask(todo.id)}
+        >
           <IoClose />
-        </button>
+        </motion.button>
       </div>
-      {todo.completed && <span>done</span>}
-    </li>
+      {todo.completed && (
+        <motion.span
+          whileHover={{
+            scale: 1.1,
+            opacity: 0.9,
+            textDecorationLine: 'line-through',
+          }}
+          whileTap={{ scale: 1 }}
+          onClick={() => onCompletedTodo(todo.id)}
+        >
+          done
+        </motion.span>
+      )}
+    </motion.li>
   );
 };
 

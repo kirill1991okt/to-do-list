@@ -1,4 +1,5 @@
 import React from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { IData, selectState } from '../../redux/slices/todoReducer';
 import {
@@ -18,30 +19,52 @@ const DisplayTodos = () => {
   return (
     <div className={styles.display}>
       <div className={styles.buttons}>
-        <button onClick={() => dispatch(changeSort(sortState.ALL))}>All</button>
-        <button onClick={() => dispatch(changeSort(sortState.ACTIVE))}>
+        <motion.button
+          className={sort === sortState.ALL ? styles.all : ''}
+          whileHover={{ scale: 1.1, opacity: 0.9 }}
+          whileTap={{ scale: 1 }}
+          onClick={() => dispatch(changeSort(sortState.ALL))}
+        >
+          All
+        </motion.button>
+        <motion.button
+          className={sort === sortState.ACTIVE ? styles.active : ''}
+          whileHover={{ scale: 1.1, opacity: 0.9 }}
+          whileTap={{ scale: 1 }}
+          onClick={() => dispatch(changeSort(sortState.ACTIVE))}
+        >
           Active
-        </button>
-        <button onClick={() => dispatch(changeSort(sortState.COMPLETED))}>
+        </motion.button>
+        <motion.button
+          className={sort === sortState.COMPLETED ? styles.completed : ''}
+          whileHover={{ scale: 1.1, opacity: 0.9 }}
+          whileTap={{ scale: 1 }}
+          onClick={() => dispatch(changeSort(sortState.COMPLETED))}
+        >
           Completed
-        </button>
+        </motion.button>
       </div>
+
       <ul>
-        {todoArray.length > 0 && sort === sortState.ACTIVE
-          ? todoArray.map((todo: IData) => {
-              return !todo.completed && <TodoItem key={todo.id} todo={todo} />;
-            })
-          : null}
-        {todoArray.length > 0 && sort === sortState.COMPLETED
-          ? todoArray.map((todo: IData) => {
-              return todo.completed && <TodoItem key={todo.id} todo={todo} />;
-            })
-          : null}
-        {todoArray.length > 0 && sort === sortState.ALL
-          ? todoArray.map((todo: IData) => {
-              return <TodoItem key={todo.id} todo={todo} />;
-            })
-          : null}
+        <AnimatePresence>
+          {todoArray.length > 0 && sort === sortState.ACTIVE
+            ? todoArray.map((todo: IData) => {
+                return (
+                  !todo.completed && <TodoItem key={todo.id} todo={todo} />
+                );
+              })
+            : null}
+          {todoArray.length > 0 && sort === sortState.COMPLETED
+            ? todoArray.map((todo: IData) => {
+                return todo.completed && <TodoItem key={todo.id} todo={todo} />;
+              })
+            : null}
+          {todoArray.length > 0 && sort === sortState.ALL
+            ? todoArray.map((todo: IData) => {
+                return <TodoItem key={todo.id} todo={todo} />;
+              })
+            : null}
+        </AnimatePresence>
       </ul>
     </div>
   );

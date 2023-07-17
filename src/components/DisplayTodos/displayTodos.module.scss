@@ -8,6 +8,14 @@
   .buttons {
     margin-bottom: 2rem;
 
+    .all,
+    .active,
+    .completed {
+      background-color: #fffca8;
+      border: 1px solid #064895;
+      color: #064895;
+    }
+
     button {
       font-size: 1.5rem;
       font-weight: bold;
@@ -22,18 +30,30 @@
         margin-left: 1rem;
         margin-right: 1rem;
       }
-
-      &:hover {
-        opacity: 0.9;
-      }
     }
   }
 
   ul {
     list-style: none;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     align-self: flex-start;
     margin-left: 5%;
+  }
+}
+
+@media (max-width: 640px) {
+  .display {
+    .buttons {
+      button {
+        font-size: 0.7rem;
+        padding: 0.5rem 0.5rem;
+      }
+    }
+
+    ul {
+      margin-left: 0;
+    }
   }
 }

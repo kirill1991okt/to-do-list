@@ -26,9 +26,26 @@
     padding: 0.5rem 1rem;
     color: #fffca8;
     cursor: pointer;
+  }
+}
 
-    &:hover {
-      opacity: 0.9;
+.customModal {
+  background: #dedede;
+  width: 50%;
+  p {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .root {
+    input {
+      min-width: 15rem;
+    }
+
+    button {
+      font-size: 0.5rem;
+      margin-left: 0.5rem;
     }
   }
 }
