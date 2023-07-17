@@ -105,7 +105,7 @@ const TodoItem: React.FC<TodoItemType> = ({ todo }) => {
             whileTap={{ scale: 0.9 }}
             onClick={() => onCompletedTodo(todo.id)}
           >
-            <IoCheckmarkDoneSharp />
+            <IoCheckmarkDoneSharp style={{ color: 'green' }} />
           </motion.button>
         )}
         <motion.button
@@ -113,7 +113,7 @@ const TodoItem: React.FC<TodoItemType> = ({ todo }) => {
           whileTap={{ scale: 0.9 }}
           onClick={() => onRemoveTask(todo.id)}
         >
-          <IoClose />
+          <IoClose style={{ color: 'red' }} />
         </motion.button>
       </div>
       {todo.completed && (
