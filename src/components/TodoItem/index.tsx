@@ -23,13 +23,23 @@ const TodoItem: React.FC<TodoItemType> = ({ todo }) => {
 
   const onChangeFocus = (): void => {
     if (textAreaRef.current) {
-      textAreaRef.current.disabled = false;
-      textAreaRef.current.focus();
+      const textArea = textAreaRef.current;
+
+      textArea.disabled = false;
+      textArea.focus();
+      textArea.selectionStart = textArea.value.length;
     }
   };
 
   const onRemoveTask = (id: string): void => {
     dispatch(removeTodos(id));
+  };
+
+  const sendUpdateTaskToReducer = (id: string, value: string): void => {
+    if (textAreaRef.current) {
+      textAreaRef.current.disabled = true;
+    }
+    dispatch(updateTodos({ id, item: value }));
   };
 
   const onUpdateTodo = (
@@ -41,10 +51,7 @@ const TodoItem: React.FC<TodoItemType> = ({ todo }) => {
       if (textValue === '') {
         onRemoveTask(id);
       } else {
-        if (textAreaRef.current) {
-          textAreaRef.current.disabled = true;
-        }
-        dispatch(updateTodos({ id, item: value }));
+        sendUpdateTaskToReducer(id, value);
       }
     }
   };
@@ -53,10 +60,7 @@ const TodoItem: React.FC<TodoItemType> = ({ todo }) => {
     if (textValue === '') {
       onRemoveTask(id);
     } else {
-      if (textAreaRef.current) {
-        textAreaRef.current.disabled = true;
-      }
-      dispatch(updateTodos({ id, item: value }));
+      sendUpdateTaskToReducer(id, value);
     }
   };
 

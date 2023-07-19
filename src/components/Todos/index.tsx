@@ -15,6 +15,16 @@ const Todos: React.FC = () => {
 
   const isModal = () => setOpen(!open);
 
+  const sendTaskToReduce = () => {
+    const data: IData = {
+      id: nanoid(),
+      item: todo,
+      completed: false,
+    };
+    dispatch(addTodos(data));
+    setTodo('');
+  };
+
   const handelChanges = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setTodo(e.target.value);
   };
@@ -23,13 +33,13 @@ const Todos: React.FC = () => {
     if (todo === '') {
       isModal();
     } else {
-      const data: IData = {
-        id: nanoid(),
-        item: todo,
-        completed: false,
-      };
-      dispatch(addTodos(data));
-      setTodo('');
+      sendTaskToReduce();
+    }
+  };
+
+  const onKeyAddTodo = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      sendTaskToReduce();
     }
   };
 
@@ -38,6 +48,7 @@ const Todos: React.FC = () => {
       <input
         type='text'
         onChange={(e) => handelChanges(e)}
+        onKeyDown={(e) => onKeyAddTodo(e)}
         className={styles.input}
         value={todo}
       />
